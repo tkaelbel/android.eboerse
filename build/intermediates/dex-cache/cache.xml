@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\libs\jackson-annotations-2.2.3.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="0527fece4f23a457070a36c371a26d6c0208e1c3">
+        <dex dex="C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\build\intermediates\pre-dexed\debug\jackson-annotations-2.2.3-89ce8a21b429deac1a42eb6991e2fc8c1707447a.jar" />
+    </item>
+    <item
+        jar="C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\libs\achartengine-1.1.0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="9932e3fb9fbe54e80873e77f72a99f79e33b3250">
+        <dex dex="C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\build\intermediates\pre-dexed\debug\achartengine-1.1.0-dba97671dcbd198a24cb8c3d8ee6afadc1b4c74d.jar" />
+    </item>
+    <item
+        jar="C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0">
+        <dex dex="C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\build\intermediates\pre-dexed\debug\classes-690664a0b9ed431ce7a3a9069b8f5da8a7f11a44.jar" />
+    </item>
+    <item
+        jar="C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\libs\jackson-databind-2.2.3.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="03ae380888029daefb91d3ecdca3a37d8cb92bc9">
+        <dex dex="C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\build\intermediates\pre-dexed\debug\jackson-databind-2.2.3-048522f06cf8afa2de8b99a2ee91332172983cf8.jar" />
+    </item>
+    <item
+        jar="C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
+        <dex dex="C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-6ef1d29cc57fbd8c1ce08eaa9da3a06c406415c2.jar" />
+    </item>
+    <item
+        jar="H:\Developing\Android\SDK\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
+        <dex dex="C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-d345d9aee4d03d9b9c9803551aac94645d6e98ca.jar" />
+    </item>
+    <item
+        jar="C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\libs\jackson-core-2.2.3.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="1a0113da2cab5f4c216b4e5e7c1dbfaa67087e14">
+        <dex dex="C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\build\intermediates\pre-dexed\debug\jackson-core-2.2.3-e512ab4496dd2455a25c732ac3ebff966f1ca3c0.jar" />
+    </item>
+    <item
+        jar="C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\20.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="f21927d22fe31889ecce94dd697a2e75b137e0ef">
+        <dex dex="C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\build\intermediates\pre-dexed\debug\classes-203dbc082870eaa26e8088126db129b2131e4b04.jar" />
+    </item>
+
+</items>
