@@ -3,7 +3,6 @@ package com.com.android.eboerse.service;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -18,28 +17,16 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.achartengine.GraphicalView;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListView;
-import android.widget.TextView;
 
-import com.com.android.eboerse.MainActivity;
-import com.com.android.eboerse.R;
-import com.com.android.eboerse.graph.GraphSettings;
 import com.com.android.eboerse.stock.StockInfo;
-import com.com.android.eboerse.stock.StockInfoAdapter;
+
 /**
  * eigener async task zum holen der daten fuer den service, somit kann es nicht
  * dazu kommen das der task gestartet ist und nochmal gestartet werden soll

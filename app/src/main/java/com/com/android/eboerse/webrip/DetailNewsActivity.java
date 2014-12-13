@@ -9,16 +9,13 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.com.android.eboerse.MyErrorToast;
+import com.com.android.eboerse.main.MyErrorToast;
 import com.com.android.eboerse.R;
-import com.com.android.eboerse.SymbolsGoodToKnow;
-
-import org.w3c.dom.Text;
+import com.com.android.eboerse.main.SymbolsGoodToKnow;
 
 import java.io.InputStream;
 import java.net.URL;

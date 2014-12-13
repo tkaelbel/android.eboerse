@@ -10,8 +10,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 
-import com.com.android.eboerse.MainActivity;
-import com.com.android.eboerse.MyErrorToast;
+import com.com.android.eboerse.main.MainActivity;
+import com.com.android.eboerse.main.MyErrorToast;
 import com.com.android.eboerse.R;
 import com.com.android.eboerse.search.DetailView;
 import com.com.android.eboerse.stock.ArrayAdapterable;

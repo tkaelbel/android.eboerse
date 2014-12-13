@@ -7,12 +7,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.com.android.eboerse.MainActivity;
-import com.com.android.eboerse.MyErrorToast;
+import com.com.android.eboerse.main.MyErrorToast;
 import com.com.android.eboerse.R;
-import com.com.android.eboerse.search.DetailView;
-import com.com.android.eboerse.stock.ArrayAdapterable;
-import com.com.android.eboerse.stock.StockInfoAdapter;
 import com.com.android.eboerse.webrip.webrip.model.WebripStockNews;
 import com.com.android.eboerse.webrip.webrip.model.WebripStockNewsInfo;
 
@@ -24,7 +20,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
 
 /**
  * Created by tok on 10.12.2014.

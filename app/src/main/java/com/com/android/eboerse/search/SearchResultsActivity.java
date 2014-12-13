@@ -1,7 +1,7 @@
 package com.com.android.eboerse.search;
 
 
-import com.com.android.eboerse.ConnectionDetector;
+import com.com.android.eboerse.main.ConnectionDetector;
 import com.com.android.eboerse.R;
 import com.com.android.search.json.JsonUtils;
 import com.com.android.search.json.Result;

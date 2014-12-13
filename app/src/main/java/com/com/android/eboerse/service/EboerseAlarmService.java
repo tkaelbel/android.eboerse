@@ -3,24 +3,19 @@ package com.com.android.eboerse.service;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-import com.com.android.eboerse.ConnectionDetector;
-import com.com.android.eboerse.MainActivity;
+import com.com.android.eboerse.main.MainActivity;
 import com.com.android.eboerse.R;
-import com.com.android.eboerse.SymbolsGoodToKnow;
+import com.com.android.eboerse.main.SymbolsGoodToKnow;
 import com.com.android.eboerse.database.DatabaseHandler;
 import com.com.android.eboerse.database.Favorit;
-import com.com.android.eboerse.search.YqlStockInformation;
 import com.com.android.eboerse.stock.StockInfo;
 
 
-import android.annotation.SuppressLint;
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.app.TaskStackBuilder;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;

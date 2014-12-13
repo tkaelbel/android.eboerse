@@ -1,4 +1,4 @@
-package com.com.android.eboerse;
+package com.com.android.eboerse.main;
 
 /**
  * wichtige abkuerzungen fuer YQL

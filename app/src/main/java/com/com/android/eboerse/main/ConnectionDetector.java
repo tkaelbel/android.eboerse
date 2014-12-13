@@ -1,10 +1,13 @@
-package com.com.android.eboerse;
+package com.com.android.eboerse.main;
 
 import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
+
+import com.com.android.eboerse.R;
+
 /**
  * checkt ob das Device ueberhaupt Internet faehig ist
  * @author Tok
@@ -24,7 +27,7 @@ public class ConnectionDetector {
 				}
 			}
 		
-		MyErrorToast.doToast(context, context.getResources().getString(R.string.errorMsgNoInet), Toast.LENGTH_LONG);		
+		MyErrorToast.doToast(context, context.getResources().getString(R.string.errorMsgNoInet), Toast.LENGTH_LONG);
 		return false;
 	}
 }

@@ -25,10 +25,10 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.com.android.eboerse.ConnectionDetector;
-import com.com.android.eboerse.MainActivity;
+import com.com.android.eboerse.main.ConnectionDetector;
+import com.com.android.eboerse.main.MainActivity;
 import com.com.android.eboerse.R;
-import com.com.android.eboerse.SymbolsGoodToKnow;
+import com.com.android.eboerse.main.SymbolsGoodToKnow;
 import com.com.android.eboerse.database.DatabaseHandler;
 import com.com.android.eboerse.database.Favorit;
 import com.com.android.eboerse.search.DetailView;

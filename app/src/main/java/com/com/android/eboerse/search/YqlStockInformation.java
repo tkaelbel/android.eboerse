@@ -4,7 +4,6 @@ package com.com.android.eboerse.search;
  */
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -21,7 +20,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.achartengine.GraphicalView;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -31,24 +29,16 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.com.android.eboerse.ConnectionDetector;
-import com.com.android.eboerse.MainActivity;
-import com.com.android.eboerse.MyErrorToast;
+import com.com.android.eboerse.main.MainActivity;
+import com.com.android.eboerse.main.MyErrorToast;
 import com.com.android.eboerse.R;
-import com.com.android.eboerse.graph.GraphSettings;
 import com.com.android.eboerse.stock.ArrayAdapterable;
 import com.com.android.eboerse.stock.StockInfo;
 import com.com.android.eboerse.stock.StockInfoAdapter;
-import com.com.android.stock.indices.StockIndiceInfo;
-import com.com.android.stock.indices.StockIndiceInfoAdapter;
 
 public class YqlStockInformation extends AsyncTask<String, String, String>{
 

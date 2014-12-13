@@ -16,10 +16,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
-import com.com.android.eboerse.MainActivity;
 import com.com.android.eboerse.R;
 import com.com.android.eboerse.search.DetailView;
-import com.com.android.eboerse.stock.StockInfo;
+
 /**
  * adapter für listview der top/flops/zusammensetzung tabs
  * @author Tok

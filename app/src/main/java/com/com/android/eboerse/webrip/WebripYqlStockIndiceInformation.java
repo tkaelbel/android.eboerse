@@ -10,10 +10,10 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 
-import com.com.android.eboerse.ConnectionDetector;
-import com.com.android.eboerse.MyErrorToast;
+import com.com.android.eboerse.main.ConnectionDetector;
+import com.com.android.eboerse.main.MyErrorToast;
 import com.com.android.eboerse.R;
-import com.com.android.eboerse.SymbolsGoodToKnow;
+import com.com.android.eboerse.main.SymbolsGoodToKnow;
 import com.com.android.eboerse.detail.tabs.TabDetailListener;
 import com.com.android.eboerse.search.YqlStockInformation;
 

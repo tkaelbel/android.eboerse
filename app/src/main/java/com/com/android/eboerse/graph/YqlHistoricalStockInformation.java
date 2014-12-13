@@ -6,11 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -22,22 +18,16 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.com.android.eboerse.ConnectionDetector;
-import com.com.android.eboerse.MyErrorToast;
+import com.com.android.eboerse.main.MyErrorToast;
 import com.com.android.eboerse.R;
 import com.com.android.eboerse.search.DetailView;
-import com.com.android.eboerse.stock.StockInfo;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.graphics.drawable.shapes.ArcShape;
-import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ListView;
 import android.widget.Toast;
 /**
  * async task zum holen der historischen daten von YQL

@@ -1,27 +1,20 @@
 package com.com.android.eboerse.detail.tabs;
 
 
-import java.util.ArrayList;
-
-import com.com.android.eboerse.ConnectionDetector;
-import com.com.android.eboerse.MyErrorToast;
+import com.com.android.eboerse.main.ConnectionDetector;
 import com.com.android.eboerse.R;
-import com.com.android.eboerse.SymbolsGoodToKnow;
+import com.com.android.eboerse.main.SymbolsGoodToKnow;
 import com.com.android.eboerse.search.DetailView;
 import com.com.android.eboerse.search.YqlStockInformation;
 import com.com.android.eboerse.webrip.WebripYqlStockIndiceInformation;
-import com.com.android.stock.indices.YqlIndiceStockInformation;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 /**
  * Tabdetaillistener
  * handelt alle tab selektierungen in der Detail-Ansicht

@@ -1,39 +1,25 @@
 package com.com.android.eboerse.search;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 
-import org.achartengine.GraphicalView;
-
-import com.com.android.eboerse.ConnectionDetector;
-import com.com.android.eboerse.MainActivity;
+import com.com.android.eboerse.main.ConnectionDetector;
 import com.com.android.eboerse.R;
-import com.com.android.eboerse.SymbolsGoodToKnow;
+import com.com.android.eboerse.main.SymbolsGoodToKnow;
 import com.com.android.eboerse.database.DatabaseHandler;
 import com.com.android.eboerse.database.Favorit;
 import com.com.android.eboerse.detail.tabs.TabDetailListener;
 import com.com.android.eboerse.detail.tabs.TabDetailProfil;
 import com.com.android.eboerse.detail.tabs.TabDetailTopFlop;
 import com.com.android.eboerse.detail.tabs.TabDetailZusammensetzung;
-import com.com.android.eboerse.graph.GraphSettings;
 import com.com.android.eboerse.graph.YqlHistoricalStockInformation;
-import com.com.android.eboerse.stock.StockInfo;
-import com.com.android.eboerse.tabs.TabListener;
-import com.com.android.eboerse.tabs.TabUebersicht;
 
-import android.R.array;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Activity;
 import android.app.Dialog;
-import android.app.SearchManager;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.util.Log;
@@ -42,11 +28,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.os.AsyncTask;
+
 /**
  * Detail view der kurse als neue activity
  * @author Tok

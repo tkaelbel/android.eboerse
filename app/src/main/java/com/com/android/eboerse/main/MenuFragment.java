@@ -1,4 +1,4 @@
-package com.com.android.eboerse;
+package com.com.android.eboerse.main;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.com.android.eboerse.R;
 import com.com.android.eboerse.search.YqlStockInformation;
 /**
  * dient zum handeln des menus

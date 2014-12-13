@@ -1,4 +1,4 @@
-package com.com.android.eboerse;
+package com.com.android.eboerse.main;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -26,6 +26,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 
+import com.com.android.eboerse.R;
 import com.com.android.eboerse.search.SearchResultsActivity;
 import com.com.android.eboerse.service.EboerseAlarmService;
 import com.com.android.eboerse.tabs.TabDE;
