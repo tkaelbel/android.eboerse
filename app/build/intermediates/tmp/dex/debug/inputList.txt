@@ -1,0 +1,9 @@
+C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\build\intermediates\classes\debug
+C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-d345d9aee4d03d9b9c9803551aac94645d6e98ca.jar
+C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\build\intermediates\pre-dexed\debug\jackson-annotations-2.2.3-89ce8a21b429deac1a42eb6991e2fc8c1707447a.jar
+C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-6ef1d29cc57fbd8c1ce08eaa9da3a06c406415c2.jar
+C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\build\intermediates\pre-dexed\debug\achartengine-1.1.0-dba97671dcbd198a24cb8c3d8ee6afadc1b4c74d.jar
+C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\build\intermediates\pre-dexed\debug\jackson-core-2.2.3-e512ab4496dd2455a25c732ac3ebff966f1ca3c0.jar
+C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\build\intermediates\pre-dexed\debug\classes-203dbc082870eaa26e8088126db129b2131e4b04.jar
+C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\build\intermediates\pre-dexed\debug\classes-690664a0b9ed431ce7a3a9069b8f5da8a7f11a44.jar
+C:\Users\tok\AndroidstudioProjects\com.android.eboerse_with_own_service_async\app\build\intermediates\pre-dexed\debug\jackson-databind-2.2.3-048522f06cf8afa2de8b99a2ee91332172983cf8.jar

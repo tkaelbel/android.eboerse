@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/text_view_symbol_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:lines="2"
+            />
+
+        <TextView
+            android:id="@+id/text_view_punkte_datum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/text_punkte_prozent"
+            android:layout_alignParentLeft="true"
+            android:lines="2"
+            />
+
+        <TextView
+            android:id="@+id/text_punkte_prozent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_view_symbol_name"
+            android:layout_centerHorizontal="true"
+            android:lines="2"
+            />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/Diagramm"
+        android:layout_width="match_parent"
+        android:layout_height="144dp"
+        android:layout_weight="2.08" >
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="66dp" >
+
+        <Button
+            android:id="@+id/btn_1w"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="32dp"
+            android:text="@string/btn_w1" />
+
+        <Button
+            android:id="@+id/btn_1m"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24dp"
+            android:layout_toRightOf="@+id/btn_1w"
+            android:text="@string/btn_m1" />
+
+        <Button
+            android:id="@+id/btn_1j"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@+id/btn_1m"
+            android:text="@string/btn_j1" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="121dp" >
+
+        <TextView
+            android:id="@+id/text_view_stat_tief_52W"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/text_view_stat_tief"
+            android:layout_below="@+id/text_stat_hoch"
+            android:layout_marginTop="20dp"
+            android:text="@string/tief_52" 
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/text_stat_hoch_52w"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/text_view_stat_tief_52W"
+            android:layout_alignBottom="@+id/text_view_stat_tief_52W"
+            android:layout_alignLeft="@+id/text_stat_hoch"
+            android:text="@string/hoch_52" 
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/text_stat_hoch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/hoch" 
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/text_view_stat_tief"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/text_view_stat_tief_52W"
+            android:layout_marginLeft="68dp"
+            android:layout_toRightOf="@+id/text_stat_hoch_52w"
+            android:text="@string/tief" 
+            android:textSize="12sp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

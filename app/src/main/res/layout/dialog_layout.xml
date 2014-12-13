@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/editTextUntergrenze"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView4"
+            android:layout_alignBottom="@+id/textView4"
+            android:layout_alignLeft="@+id/editTextObergrenze"
+            android:layout_alignRight="@+id/editTextObergrenze"
+            android:ems="10" 
+            android:textAlignment="viewEnd"
+            android:inputType="numberDecimal|numberSigned"/>
+
+        <TextView
+            android:id="@+id/textViewAktuell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/editTextUntergrenze"
+            android:layout_below="@+id/editTextObergrenze"
+            android:layout_marginTop="22dp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/textViewAktuell"
+            android:layout_marginLeft="18dp"
+            android:text="@string/aktuell" />
+
+        <EditText
+            android:id="@+id/editTextObergrenze"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:ems="10" 
+            android:textAlignment="viewEnd"
+            android:inputType="numberDecimal|numberSigned">
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/editTextObergrenze"
+            android:layout_alignBottom="@+id/editTextObergrenze"
+            android:layout_alignLeft="@+id/textView3"
+            android:text="@string/obergrenze" />
+
+        <Button
+            android:id="@+id/btn_ok"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/editTextUntergrenze"
+            android:layout_marginTop="19dp"
+            android:text="@string/btn_ok"
+            android:textAlignment="textStart" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/btn_ok"
+            android:layout_alignBottom="@+id/btn_ok"
+            android:layout_toLeftOf="@+id/btn_ok"
+            android:text="@string/btn_cancel"
+            android:textAlignment="textStart" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView3"
+            android:layout_below="@+id/textViewAktuell"
+            android:layout_marginTop="37dp"
+            android:text="@string/untergrenze" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

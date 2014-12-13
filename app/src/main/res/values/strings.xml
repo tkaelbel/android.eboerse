@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">eBoerse</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_websearch">Web search</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+    <string name="search_title">Search</string>
+    <string name="uebersicht_tab">Übersicht</string>
+    <string name="de_tab">Deutschland</string>
+    <string name="eu_tab">Europa</string>
+    <string name="we_tab">Welt</string>
+    <string name="marktdaten_tab">Marktdaten</string>
+	<string name="watch_tab">Watchlist</string>
+	<string name="detail_profil_tab">Profil</string>
+	<string name="detail_topflop_tab">Top/Flop</string>
+	<string name="detail_zusam_tab">Grundgerüst</string>
+	<string name="search_hint">Symbol,Name eingeben</string>
+	<string name="eroeffnung">Eröffnung</string>
+    <string name="hoch">Hoch</string>
+	<string name="hoch_52">Hoch 52W</string>
+	<string name="vortag">Vortag</string>
+	<string name="tief">Tief</string>
+	<string name="tief_52">Tief 52W</string>
+	<string name="btn_t1">1T</string>
+	<string name="btn_w1">1W</string>
+	<string name="btn_m1">1M</string>
+	<string name="btn_j1">1J</string>
+	<string name="favorite_title">Favorit</string>
+	<string name="top">Top</string>
+	<string name="flop">Flop</string>
+	<string name="kursAlarmTitel">Kurs Alarm aktivieren</string>
+	<string name="obergrenze">Obergrenze</string>
+	<string name="untergrenze">Untergrenze</string>
+	<string name="aktuell">Aktuell</string>
+	<string name="btn_ok">Ok</string>
+	<string name="btn_cancel">Cancel</string>
+	<string name="editRange">Ändern</string>
+	<string name="errorMsg">Fehler beim Zugriff auf Daten von YQL</string>
+	<string name="errorMsgNoInet">Keine Internet-Verbindung vorhanden</string>
+	<string name="news_tab">Nachrichten</string>
+
+	
+    <string-array name="drawer_list_items">
+        <item>Übersicht</item>
+        <item>Aktien</item>
+        <item>Rohstoffe</item>
+        <item>Währungen</item>
+    </string-array>
+</resources>
