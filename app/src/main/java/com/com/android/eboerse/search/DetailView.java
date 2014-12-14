@@ -113,7 +113,7 @@ public class DetailView extends Activity{
 		yqlHistory = new YqlHistoricalStockInformation(this);
 
 		if(btnName.equals(weBut.getText())){	
-			Date sevenDay = new Date(System.currentTimeMillis() - 7L * 24 * 3600 * 1000);
+			Date sevenDay = new Date(System.currentTimeMillis() - 8L * 24 * 3600 * 1000);
 			String start = format1.format(sevenDay);
 
 			String yqlHistoryQuery = SymbolsGoodToKnow.YAHOO_HISTORICAL_FIRST_URL + symbol + 
