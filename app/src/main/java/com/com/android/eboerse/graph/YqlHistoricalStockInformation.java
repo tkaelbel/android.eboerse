@@ -192,9 +192,9 @@ public class YqlHistoricalStockInformation extends AsyncTask<String, String, Str
 			setUpGraph();
 		}
 		
-		if(histStockInfo.size() == 0){
-			error();
-		}
+	//	if(histStockInfo.size() == 0){
+	//		error();
+	//	}
 	}
 
 	private void setUpGraph(){

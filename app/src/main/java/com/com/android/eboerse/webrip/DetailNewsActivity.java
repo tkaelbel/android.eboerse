@@ -133,8 +133,10 @@ public class DetailNewsActivity extends Activity{
     }
 
     private String checkBodyForSigns(String input){
-        if(input.contains(SymbolsGoodToKnow.HTML_AN)){
-            input = input.replace(SymbolsGoodToKnow.HTML_AN, "\"");
+        if(input != null){
+            if(input.contains(SymbolsGoodToKnow.HTML_AN)){
+                input = input.replace(SymbolsGoodToKnow.HTML_AN, "\"");
+            }
         }
         return input;
     }

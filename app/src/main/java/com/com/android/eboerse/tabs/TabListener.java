@@ -10,7 +10,7 @@ import com.com.android.eboerse.main.SymbolsGoodToKnow;
 import com.com.android.eboerse.database.DatabaseHandler;
 import com.com.android.eboerse.database.Favorit;
 import com.com.android.eboerse.search.YqlStockInformation;
-import com.com.android.eboerse.webrip.WebripYqlStockNews;
+import com.com.android.eboerse.webrip.WebripYqlStockTopNews;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -58,7 +58,7 @@ public class TabListener<T extends Fragment> implements ActionBar.TabListener {
 
 		String yqlQuery = null;
 		YqlStockInformation yql;
-		WebripYqlStockNews yqlNews;
+		WebripYqlStockTopNews yqlNews;
 
 		if(menuName.equals(MainActivity.MENU_ITEM_UEBERSICHT)){
 			if(mTag.equals(mActivity.getResources().getString(R.string.uebersicht_tab))){
@@ -93,7 +93,7 @@ public class TabListener<T extends Fragment> implements ActionBar.TabListener {
 			}
 			if(mTag.equals(mActivity.getResources().getString(R.string.news_tab))){
 				yqlQuery = SymbolsGoodToKnow.YAHOO_URL_AKT_NEWS;
-				yqlNews = new WebripYqlStockNews(mActivity, view, mTag);
+				yqlNews = new WebripYqlStockTopNews(mActivity, view, mTag);
 				if(ConnectionDetector.isConnectingToInternet(mActivity)){
 					yqlNews.execute(yqlQuery);
 				}

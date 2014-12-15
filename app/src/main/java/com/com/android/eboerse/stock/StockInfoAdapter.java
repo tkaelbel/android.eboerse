@@ -3,6 +3,7 @@ package com.com.android.eboerse.stock;
  * listview adapter fuer alle anzeigen
  * bei der watchlist wird ein imagebutton zum editieren hinzugefuegt
  */
+import java.nio.charset.MalformedInputException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,7 +33,7 @@ import com.com.android.eboerse.main.SymbolsGoodToKnow;
 import com.com.android.eboerse.database.DatabaseHandler;
 import com.com.android.eboerse.database.Favorit;
 import com.com.android.eboerse.search.DetailView;
-import com.com.android.eboerse.webrip.WebripYqlDetailNews;
+import com.com.android.eboerse.webrip.WebripYqlTopNews;
 import com.com.android.eboerse.webrip.webrip.model.WebripStockNewsInfo;
 
 
@@ -194,6 +195,30 @@ public class StockInfoAdapter extends ArrayAdapter<ArrayAdapterable> implements 
                         stockInfoHolder.infos.setTextSize(8);
                         stockInfoHolder.infos.setTypeface(null, Typeface.ITALIC);
                     }
+                }else if(act instanceof DetailView){
+                    if(v == null){
+                        LayoutInflater vi = (LayoutInflater) act.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+                        v = vi.inflate(R.layout.listview_items_uebersicht, null);
+                        stockInfoHolder = new StockInfoViewHolder();
+                        stockInfoHolder.name = (TextView)v.findViewById(R.id.stock_name);
+                        stockInfoHolder.infos = (TextView)v.findViewById(R.id.stock_infos);
+                        v.setTag(stockInfoHolder);
+                    } else stockInfoHolder = (StockInfoViewHolder)v.getTag();
+
+                    WebripStockNewsInfo stock = (WebripStockNewsInfo) items.get(pos);
+
+                    if (stock != null) {
+                        stockInfoHolder.name.setText(utf8Shit(stock.getTimeAndSite()));
+                        stockInfoHolder.name.setTypeface(null, Typeface.BOLD);
+                        if(stock.getNews() == null){
+                            stockInfoHolder.infos.setText("N/A");
+                        }else{
+                            stockInfoHolder.infos.setText(stock.getNews());
+                        }
+
+                        stockInfoHolder.infos.setTextSize(10);
+                        stockInfoHolder.infos.setTypeface(null, Typeface.ITALIC);
+                    }
                 }
             }
         }
@@ -218,15 +243,27 @@ public class StockInfoAdapter extends ArrayAdapter<ArrayAdapterable> implements 
             StockInfo rst = (StockInfo) obj;
             showDetailView(rst.getSymbol());
         }else if(obj instanceof  WebripStockNewsInfo){
-            WebripStockNewsInfo webripStockNewsInfo = (WebripStockNewsInfo) obj;
-            String url = null;
-            if(webripStockNewsInfo.getHtmlLink() != null)
-                url = SymbolsGoodToKnow.YAHOO_URL_NEWS_DETAIL + webripStockNewsInfo.getHtmlLink();
-            String html = utf8Shit(url);
-            WebripYqlDetailNews ripDetailNews = new WebripYqlDetailNews(act, webripStockNewsInfo);
-            if(ConnectionDetector.isConnectingToInternet(act)){
-                ripDetailNews.execute(html);
+            if(act instanceof MainActivity){
+                WebripStockNewsInfo webripStockNewsInfo = (WebripStockNewsInfo) obj;
+                String url = null;
+                if(webripStockNewsInfo.getHtmlLink() != null)
+                    url = SymbolsGoodToKnow.YAHOO_URL_NEWS_DETAIL + webripStockNewsInfo.getHtmlLink();
+                String html = utf8Shit(url);
+                WebripYqlTopNews ripDetailNews = new WebripYqlTopNews(act, webripStockNewsInfo);
+                if(ConnectionDetector.isConnectingToInternet(act)){
+                    ripDetailNews.execute(html);
+                }
+            }else if(act instanceof DetailView){
+                WebripStockNewsInfo webripStockNewsInfo = (WebripStockNewsInfo) obj;
+                String html = null;
+                if(webripStockNewsInfo.getHtmlLink() != null)
+                   html = utf8Shit(webripStockNewsInfo.getHtmlLink());
+                WebripYqlTopNews ripDetailNews = new WebripYqlTopNews(act, webripStockNewsInfo);
+                if(ConnectionDetector.isConnectingToInternet(act)){
+                    ripDetailNews.execute(html);
+                }
             }
+
         }
 
     }

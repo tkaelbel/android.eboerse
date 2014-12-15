@@ -25,7 +25,7 @@ import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class WebripYqlStockNews extends AsyncTask<String, String, String>{
+public class WebripYqlStockTopNews extends AsyncTask<String, String, String>{
 
 	private String yqlQuery = null;
 	private ProgressDialog pdia;
@@ -38,13 +38,13 @@ public class WebripYqlStockNews extends AsyncTask<String, String, String>{
 	private String tab = null;
 	private ArrayList<ArrayAdapterable> news = null;
 
-	public WebripYqlStockNews(Activity mainact, ListView view, String tab) {
+	public WebripYqlStockTopNews(Activity mainact, ListView view, String tab) {
 		this.act = mainact;
 		this.view = view;
 		this.tab = tab;
 	}
 
-	public WebripYqlStockNews(Activity act, ListView top, ListView flop, String tab){
+	public WebripYqlStockTopNews(Activity act, ListView top, ListView flop, String tab){
 		this.act = act;
 		this.viewTop = top;
 		this.viewBot = flop;
@@ -236,8 +236,18 @@ public class WebripYqlStockNews extends AsyncTask<String, String, String>{
 				secAdapter = new StockInfoAdapter(act, android.R.layout.simple_list_item_1, news, act, view);
 
 			}else if(act instanceof DetailView){
+                StockInfoAdapter adapter = (StockInfoAdapter) view.getAdapter();
+                if(adapter != null)
+                    adapter.clear();
 
-			}
+                for(ArrayAdapterable infos : news){
+                    WebripStockNewsInfo web = (WebripStockNewsInfo) infos;
+                    Log.v("WebRip PostExecute", "Die tollen Objekte mit diesen Werten: " + web.getNews() + "   " + web.getHtmlLink());
+                }
+
+                secAdapter = new StockInfoAdapter(act, android.R.layout.simple_list_item_1, news, act, view);
+
+            }
 		}
 		
 		view.setOnItemClickListener(secAdapter);

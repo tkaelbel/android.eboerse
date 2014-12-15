@@ -6,7 +6,9 @@ import com.com.android.eboerse.R;
 import com.com.android.eboerse.main.SymbolsGoodToKnow;
 import com.com.android.eboerse.search.DetailView;
 import com.com.android.eboerse.search.YqlStockInformation;
+import com.com.android.eboerse.webrip.WebripYqlDetailNews;
 import com.com.android.eboerse.webrip.WebripYqlStockIndiceInformation;
+import com.com.android.eboerse.webrip.WebripYqlStockTopNews;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -26,7 +28,7 @@ public class TabDetailListener <T extends Fragment> implements ActionBar.TabList
 
 	public static final String TAB_PROFIL = "Profil";
 	public static final String TAB_TOP_FLOP = "Top/Flop";
-	public static final String TAB_ZUSAM = "Grundger\\u00dcst";
+	public static final String TAB_ZUSAM = "Grundgerüst";
 
 	private DetailView act;
 	private String tag;
@@ -67,9 +69,11 @@ public class TabDetailListener <T extends Fragment> implements ActionBar.TabList
 
 		YqlStockInformation yqlStock;
 		WebripYqlStockIndiceInformation rip;
+        WebripYqlStockTopNews ripNews;
+        WebripYqlDetailNews detailNews;
 
 		//		Detail View ansicht - Profil
-		if(tag.equals(TAB_PROFIL)){
+		if(tag.equals(act.getResources().getString(R.string.detail_profil_tab))){
 
 			act.setContentView(R.layout.detail_list_view);
 			act.setupBtnListeners();
@@ -96,7 +100,7 @@ public class TabDetailListener <T extends Fragment> implements ActionBar.TabList
 		}
 
 		//		Detail View ansicht - Top/Flop
-		if(tag.equals(TAB_TOP_FLOP)){
+		if(tag.equals(act.getResources().getString(R.string.detail_topflop_tab))){
 			act.setContentView(R.layout.detail_top_flop_list_view);
 			ListView listTop = (ListView) act.findViewById(R.id.list_view_top);
 			ListView listFlop = (ListView) act.findViewById(R.id.list_view_flop);
@@ -121,24 +125,28 @@ public class TabDetailListener <T extends Fragment> implements ActionBar.TabList
 		}
 
 		// Detail View ansicht - Zusammensetzung		
-		if(tag.equals(TAB_ZUSAM)){
+		if(tag.equals(act.getResources().getString(R.string.detail_zusam_tab))){
 			act.setContentView(R.layout.detail_zusammen_list_view);
 			ListView list = (ListView) act.findViewById(R.id.list_view_detail_zusammenfassen);
-//			String symbolNeu = symbol.replace("^", "");
-
-//			yqlQuery = SymbolsGoodToKnow.YAHOO_URL_IDX_FIRST + symbolNeu + SymbolsGoodToKnow.YAHOO_URL_IDX_SEC;
-			
 			yqlQuery = SymbolsGoodToKnow.YAHOO_URL_IDX_BESTANDTEILE_FIRST + symbol;
-//			ArrayList<String> symbols = rip.ripSymbolsFromHttp(yqlQuery);
 			rip = new WebripYqlStockIndiceInformation(act, list, tag);
-			
-//			yqlIndice = new YqlIndiceStockInformation(act, list);
+
 			if(ConnectionDetector.isConnectingToInternet(act)){
-//				yqlIndice.execute(yqlQuery);
 				rip.execute(yqlQuery);
 			}
 			
 		}
+
+        if(tag.equals(act.getResources().getString(R.string.news_tab))){
+            act.setContentView(R.layout.list_view);
+            ListView list = (ListView) act.findViewById(R.id.list_view);
+            detailNews = new WebripYqlDetailNews(act,list, tag);
+
+            if(ConnectionDetector.isConnectingToInternet(act)){
+                detailNews.execute(SymbolsGoodToKnow.YAHOO_URL_NEWS + symbol);
+            }
+
+        }
 	}
 
 	@Override

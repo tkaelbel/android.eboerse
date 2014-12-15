@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.com.android.eboerse.detail.tabs.TabDetailNews;
 import com.com.android.eboerse.main.ConnectionDetector;
 import com.com.android.eboerse.R;
 import com.com.android.eboerse.main.SymbolsGoodToKnow;
@@ -19,6 +20,7 @@ import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -62,6 +64,7 @@ public class DetailView extends Activity{
 	private Tab tabProfil;
 	private Tab tabTopFlop;
 	private Tab tabZusam;
+    private Tab tabNews;
 
 	private SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
 	private DatabaseHandler db;
@@ -90,9 +93,7 @@ public class DetailView extends Activity{
 			symbol = bundleSymbol.getString("symbol");
 		}
 
-		if(symbol.contains("^")){
-			doTabs();
-		}
+	    doTabs(symbol.contains("^"));
 
 		String yqlQuery = SymbolsGoodToKnow.YAHOO_URL_FIRST + symbol + SymbolsGoodToKnow.YAHOO_URL_SECOND;
 		yql = new YqlStockInformation(this, symbolNameAndName, pointsAndDate, pointsAndPercent, eroeffnung, hoch,
@@ -196,35 +197,60 @@ public class DetailView extends Activity{
 	}
 
 
-	private void doTabs(){
+	private void doTabs(boolean isIndex){
 
 		bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-		String label1 = getResources().getString(R.string.detail_profil_tab);
-		tabProfil = bar.newTab();
-		tabProfil.setText(label1);
+        if(isIndex) {
+            String label1 = getResources().getString(R.string.detail_profil_tab);
+            tabProfil = bar.newTab();
+            tabProfil.setText(label1);
+
+            TabDetailListener<?> tl = new TabDetailListener<TabDetailProfil>(this, label1, TabDetailProfil.class, symbol);
+            tabProfil.setTabListener(tl);
+            bar.addTab(tabProfil);
+
+            label1 = getResources().getString(R.string.detail_topflop_tab);
+            tabTopFlop = bar.newTab();
+            tabTopFlop.setText(label1);
+
+            TabDetailListener<?> tl1 = new TabDetailListener<TabDetailTopFlop>(this, label1, TabDetailTopFlop.class, symbol);
+            tabTopFlop.setTabListener(tl1);
+            bar.addTab(tabTopFlop);
 
 
-		TabDetailListener<?> tl = new TabDetailListener<TabDetailProfil>(this,label1, TabDetailProfil.class, symbol);
-		tabProfil.setTabListener(tl);
-		bar.addTab(tabProfil);
+            label1 = getResources().getString(R.string.detail_zusam_tab);
+            tabZusam = bar.newTab();
+            tabZusam.setText(label1);
 
-		label1 = getResources().getString(R.string.detail_topflop_tab);
-		tabTopFlop = bar.newTab();
-		tabTopFlop.setText(label1);
+            TabDetailListener<?> tl2 = new TabDetailListener<TabDetailZusammensetzung>(this, label1, TabDetailZusammensetzung.class, symbol);
+            tabZusam.setTabListener(tl2);
+            bar.addTab(tabZusam);
 
-		TabDetailListener<?> tl1 = new TabDetailListener<TabDetailTopFlop>(this,label1, TabDetailTopFlop.class, symbol);
-		tabTopFlop.setTabListener(tl1);
-		bar.addTab(tabTopFlop);
+            label1 = getResources().getString(R.string.news_tab);
+            tabNews = bar.newTab();
+            tabNews.setText(label1);
 
+            TabDetailListener<?> tl3 = new TabDetailListener<TabDetailNews>(this, label1, TabDetailNews.class, symbol);
+            tabNews.setTabListener(tl3);
+            bar.addTab(tabNews);
+        }else{
+            String label1 = getResources().getString(R.string.detail_profil_tab);
+            tabProfil = bar.newTab();
+            tabProfil.setText(label1);
 
-		label1 = getResources().getString(R.string.detail_zusam_tab);
-		tabZusam = bar.newTab();
-		tabZusam.setText(label1);
+            TabDetailListener<?> tl = new TabDetailListener<TabDetailProfil>(this, label1, TabDetailProfil.class, symbol);
+            tabProfil.setTabListener(tl);
+            bar.addTab(tabProfil);
 
-		TabDetailListener<?> tl2 = new TabDetailListener<TabDetailZusammensetzung>(this,label1, TabDetailZusammensetzung.class, symbol);
-		tabZusam.setTabListener(tl2);
-		bar.addTab(tabZusam);
+            label1 = getResources().getString(R.string.news_tab);
+            tabNews = bar.newTab();
+            tabNews.setText(label1);
+
+            TabDetailListener<?> tl1 = new TabDetailListener<TabDetailNews>(this, label1, TabDetailNews.class, symbol);
+            tabNews.setTabListener(tl1);
+            bar.addTab(tabNews);
+        }
 
 	}
 
