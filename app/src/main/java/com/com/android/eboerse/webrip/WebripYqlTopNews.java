@@ -175,19 +175,33 @@ public class WebripYqlTopNews extends AsyncTask<String, String, String> {
                 }
 
             }else{
-                Looper.prepare();
                 dismissDialog();
-                error("Fehler beim Zugriff auf die Webseite!");
+                act.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        error("Fehler beim Laden der Daten!");
+                    }
+                });
             }
 
         } catch (MalformedURLException e) {
             Log.d("WebRipAsyncTask", "MalformedURLException", e);
             dismissDialog();
-            error("Fehler in der URL!");
+            act.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    error("Fehler in der URL!");
+                }
+            });
         } catch (IOException e) {
             Log.d("WebRipAsyncTask", "IOException", e);
             dismissDialog();
-            error("Fehler beim Lesen der Webseite!");
+            act.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    error("Fehler beim Lesen!");
+                }
+            });
         }
         return null;
     }

@@ -61,6 +61,7 @@ public class StockInfoAdapter extends ArrayAdapter<ArrayAdapterable> implements 
     private int position;
 
     private DatabaseHandler db;
+    private String timeOld = new String();
 
     private class StockInfoViewHolder {
         TextView name;
@@ -209,26 +210,35 @@ public class StockInfoAdapter extends ArrayAdapter<ArrayAdapterable> implements 
                     WebripStockNewsInfo stock = (WebripStockNewsInfo) items.get(pos);
 
                     if (stock != null) {
-                        String timeOld = new String();
-                        if(timeOld.equals(stock.getTimeAndSite())){
-                            LinearLayout parentLayout = (LinearLayout)stockInfoHolder.name.getParent();
-                            parentLayout.removeView(stockInfoHolder.name);
-                        }else{
-                            stockInfoHolder.name.setText(utf8Shit(stock.getTimeAndSite()));
-                            stockInfoHolder.name.setTypeface(null, Typeface.BOLD);
-                            stockInfoHolder.name.setTextSize(12);
+
+                        if (stock.getNews() != null) {
+                            if (stock.getTimeAndSite() == null) {
+                                LinearLayout parentLayout = (LinearLayout) stockInfoHolder.name.getParent();
+                                if(parentLayout != null){
+                                    parentLayout.removeView(stockInfoHolder.name);
+                                    TextView view = (TextView) parentLayout.getChildAt(0);
+                                    parentLayout.removeView(view);
+                                    parentLayout.addView(view, 0);
+                                    stockInfoHolder.infos = view;
+                                }
+                            } else {
+                                if (stock.getTimeAndSite() != null)
+                                    stockInfoHolder.name.setText(utf8Shit(stock.getTimeAndSite()));
+                                stockInfoHolder.name.setTypeface(null, Typeface.BOLD);
+                                stockInfoHolder.name.setTextSize(12);
+                            }
+
+                            if (stock.getNews() == null) {
+                                stockInfoHolder.infos.setText("N/A");
+                            } else {
+                                stockInfoHolder.infos.setText(stock.getNews());
+                            }
+
+                            stockInfoHolder.infos.setTextSize(10);
+                            stockInfoHolder.infos.setTypeface(null, Typeface.ITALIC);
+
+                            timeOld = stock.getTimeAndSite();
                         }
-
-                        if(stock.getNews() == null){
-                            stockInfoHolder.infos.setText("N/A");
-                        }else{
-                            stockInfoHolder.infos.setText(stock.getNews());
-                        }
-
-                        stockInfoHolder.infos.setTextSize(10);
-                        stockInfoHolder.infos.setTypeface(null, Typeface.ITALIC);
-
-                        timeOld = stock.getTimeAndSite();
                     }
                 }
             }
@@ -361,37 +371,42 @@ public class StockInfoAdapter extends ArrayAdapter<ArrayAdapterable> implements 
     }
 
     private String utf8Shit(String stringToCheck){
-        if(stringToCheck.contains(SymbolsGoodToKnow.UTF_8_ae)){
-            stringToCheck = stringToCheck.replace(SymbolsGoodToKnow.UTF_8_ae, "ä");
-        }
-        if(stringToCheck.contains(SymbolsGoodToKnow.UTF_8_oe)){
-            stringToCheck = stringToCheck.replace(SymbolsGoodToKnow.UTF_8_oe, "ö");
-        }
-        if(stringToCheck.contains(SymbolsGoodToKnow.UTF_8_ue)){
-            stringToCheck = stringToCheck.replace(SymbolsGoodToKnow.UTF_8_ue, "ü");
-        }
-        if(stringToCheck.contains(SymbolsGoodToKnow.UTF_8_AE)){
-            stringToCheck = stringToCheck.replace(SymbolsGoodToKnow.UTF_8_AE, "Ä");
-        }
-        if(stringToCheck.contains(SymbolsGoodToKnow.UTF_8_OE)){
-            stringToCheck = stringToCheck.replace(SymbolsGoodToKnow.UTF_8_OE, "Ö");
-        }
-        if(stringToCheck.contains(SymbolsGoodToKnow.UTF_8_UE)){
-            stringToCheck = stringToCheck.replace(SymbolsGoodToKnow.UTF_8_UE, "Ü");
-        }
-        if(stringToCheck.contains(SymbolsGoodToKnow.UTF_8_ss)){
-            stringToCheck = stringToCheck.replace(SymbolsGoodToKnow.UTF_8_ss, "ß");
-        }
-        if(stringToCheck.contains(SymbolsGoodToKnow.UTF_8_RP)){
-            stringToCheck = stringToCheck.replace(SymbolsGoodToKnow.UTF_8_RP, "«");
-        }
-        if(stringToCheck.contains(SymbolsGoodToKnow.UTF_8_LP)){
-            stringToCheck = stringToCheck.replace(SymbolsGoodToKnow.UTF_8_LP, "»");
+
+        if(stringToCheck != null) {
+            if (stringToCheck.contains(SymbolsGoodToKnow.UTF_8_ae)) {
+                stringToCheck = stringToCheck.replace(SymbolsGoodToKnow.UTF_8_ae, "ä");
+            }
+            if (stringToCheck.contains(SymbolsGoodToKnow.UTF_8_oe)) {
+                stringToCheck = stringToCheck.replace(SymbolsGoodToKnow.UTF_8_oe, "ö");
+            }
+            if (stringToCheck.contains(SymbolsGoodToKnow.UTF_8_ue)) {
+                stringToCheck = stringToCheck.replace(SymbolsGoodToKnow.UTF_8_ue, "ü");
+            }
+            if (stringToCheck.contains(SymbolsGoodToKnow.UTF_8_AE)) {
+                stringToCheck = stringToCheck.replace(SymbolsGoodToKnow.UTF_8_AE, "Ä");
+            }
+            if (stringToCheck.contains(SymbolsGoodToKnow.UTF_8_OE)) {
+                stringToCheck = stringToCheck.replace(SymbolsGoodToKnow.UTF_8_OE, "Ö");
+            }
+            if (stringToCheck.contains(SymbolsGoodToKnow.UTF_8_UE)) {
+                stringToCheck = stringToCheck.replace(SymbolsGoodToKnow.UTF_8_UE, "Ü");
+            }
+            if (stringToCheck.contains(SymbolsGoodToKnow.UTF_8_ss)) {
+                stringToCheck = stringToCheck.replace(SymbolsGoodToKnow.UTF_8_ss, "ß");
+            }
+            if (stringToCheck.contains(SymbolsGoodToKnow.UTF_8_RP)) {
+                stringToCheck = stringToCheck.replace(SymbolsGoodToKnow.UTF_8_RP, "«");
+            }
+            if (stringToCheck.contains(SymbolsGoodToKnow.UTF_8_LP)) {
+                stringToCheck = stringToCheck.replace(SymbolsGoodToKnow.UTF_8_LP, "»");
+            }
+
+            if(stringToCheck.contains("\\")){
+                stringToCheck = stringToCheck.replace("\\", "");
+            }
         }
 
-        if(stringToCheck.contains("\\")){
-            stringToCheck = stringToCheck.replace("\\", "");
-        }
+
         return stringToCheck;
     }
 

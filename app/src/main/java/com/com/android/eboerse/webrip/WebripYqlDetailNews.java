@@ -69,38 +69,52 @@ public class WebripYqlDetailNews extends AsyncTask<String, String, String>{
         ArrayList<ArrayAdapterable> webRipStockNewsInfoList = new ArrayList<ArrayAdapterable>();
         WebripStockNewsInfo info = null;
 
-        while(ripped.contains("<span>")){
-            info = new WebripStockNewsInfo();
+        if(ripped != null){
+            while(ripped.contains("<span>")){
+                info = new WebripStockNewsInfo();
 
-            int idxTimeFirst = ripped.indexOf("<h3>");
-            int idxTimeLast = ripped.indexOf("</h3>");
+                int idxTimeFirst = ripped.indexOf("<h3>");
+                int idxTimeLast = ripped.indexOf("</h3>");
 
-            int idxTimeFirstDay = ripped.indexOf("<span>");
-            int idxTimeLastDay = ripped.indexOf("</span>");
+                int idxTimeFirstDay = ripped.indexOf("<span>");
+                int idxTimeLastDay = ripped.indexOf("</span>");
 
-            int idxHtmlFirst = ripped.indexOf("<a href=\"");
-            int idxHtmlLast = ripped.indexOf(".html\">");
+                int idxHtmlFirst = ripped.indexOf("<a href=\"");
+                int idxHtmlLast = ripped.indexOf(".html\">");
 
-            int idxNewsFirst = ripped.indexOf(".html\">");
-            int idxNewsLast = ripped.indexOf("</a>");
+                int idxNewsFirst = ripped.indexOf(".html\">");
+                int idxNewsLast = ripped.indexOf("</a>");
 
-            info.setTimeAndSite(ripped.substring(idxTimeFirst + "<h3>".length() + "<span>".length() , idxTimeLast - "</span>".length()));
-            Log.v("Webrip", "Got this String with Data: " + info.getTimeAndSite());
-            info.setHtmlLink(ripped.substring(idxHtmlFirst + "<a href=\"".length(), idxHtmlLast + ".html\">".length()-2));
-            Log.v("Webrip", "Got this String with Data: " + info.getHtmlLink());
-            info.setNews(ripped.substring(idxNewsFirst + ".html\">".length(), idxNewsLast));
-            Log.v("Webrip", "Got this String with Data: " + info.getNews());
+                if(idxTimeFirst == -1 && idxTimeLast == -1 && idxHtmlFirst == -1 && idxHtmlLast == -1 && idxNewsFirst == -1 && idxNewsLast == -1)
+                    break;
 
-            ripped = ripped.replaceFirst("<h3>", "");
-            ripped = ripped.replaceFirst("</h3>", "");
-            ripped = ripped.replaceFirst("<a href=\"", "");
-            ripped = ripped.replaceFirst(".html\">", "");
-            ripped = ripped.replaceFirst("</a>", "");
-            ripped = ripped.replaceFirst("<span>", "");
-            ripped = ripped.replaceFirst("</span>", "");
+                if(idxTimeFirst != -1 && idxTimeLast != -1){
+                    info.setTimeAndSite(ripped.substring(idxTimeFirst + "<h3>".length() + "<span>".length() , idxTimeLast - "</span>".length()));
+                    Log.v("Webrip", "Got this String with Data: " + info.getTimeAndSite());
+                }
 
-            webRipStockNewsInfoList.add(info);
+                if(idxHtmlFirst != -1 && idxHtmlLast != -1){
+                    info.setHtmlLink(ripped.substring(idxHtmlFirst + "<a href=\"".length(), idxHtmlLast + ".html\">".length()-2));
+                    Log.v("Webrip", "Got this String with Data: " + info.getHtmlLink());
+                }
+
+                if(idxNewsFirst != -1 && idxNewsLast != -1){
+                    info.setNews(ripped.substring(idxNewsFirst + ".html\">".length(), idxNewsLast));
+                    Log.v("Webrip", "Got this String with Data: " + info.getNews());
+                }
+
+                ripped = ripped.replaceFirst("<h3>", "");
+                ripped = ripped.replaceFirst("</h3>", "");
+                ripped = ripped.replaceFirst("<a href=\"", "");
+                ripped = ripped.replaceFirst(".html\">", "");
+                ripped = ripped.replaceFirst("</a>", "");
+                ripped = ripped.replaceFirst("<span>", "");
+                ripped = ripped.replaceFirst("</span>", "");
+
+                webRipStockNewsInfoList.add(info);
+            }
         }
+
 
 
         return webRipStockNewsInfoList;
@@ -171,11 +185,13 @@ public class WebripYqlDetailNews extends AsyncTask<String, String, String>{
         StockInfoAdapter secAdapter = null;
 
         if(news != null){
-                StockInfoAdapter adapter = (StockInfoAdapter) view.getAdapter();
-                if(adapter != null)
-                    adapter.clear();
+            StockInfoAdapter adapter = (StockInfoAdapter) view.getAdapter();
+            if(adapter != null)
+                adapter.clear();
 
-                secAdapter = new StockInfoAdapter(act, android.R.layout.simple_list_item_1, news, act, view);
+            secAdapter = new StockInfoAdapter(act, android.R.layout.simple_list_item_1, news, act, view);
+        }else{
+            error();
         }
 
         view.setOnItemClickListener(secAdapter);
