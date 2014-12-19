@@ -38,6 +38,7 @@ public class WebripYqlTopNews extends AsyncTask<String, String, String> {
     private static final String b = "<b>";
     private static final String endb = "</b>";
 
+    private int response = 0;
 
 
     public WebripYqlTopNews(Activity mainact, WebripStockNewsInfo info) {
@@ -69,6 +70,7 @@ public class WebripYqlTopNews extends AsyncTask<String, String, String> {
             HttpURLConnection httpConnection = (HttpURLConnection)connection;
             int responseCode = httpConnection.getResponseCode();
 
+            response = responseCode;
             Log.v("YQL", "HTTP Response Code:" + responseCode);
 
             if (responseCode == HttpURLConnection.HTTP_OK) {
@@ -140,6 +142,10 @@ public class WebripYqlTopNews extends AsyncTask<String, String, String> {
                                     line = line.replaceFirst("</p>", "");
                                 }
 
+                                if(idxLast == -1){
+                                    newsNews = newsNews + line.substring(idxFirst + "<p>".length(), line.length());
+                                    break;
+                                }
                                 System.out.println(newsNews);
                             }
                             news.setNews(newsNews);
@@ -149,7 +155,15 @@ public class WebripYqlTopNews extends AsyncTask<String, String, String> {
                         }
 
                         if(line.contains("<span class=\"provider org\">")){
-                            news.setFrom(line.substring(line.indexOf("<span class=\"provider org\">") + "<span class=\"provider org\">".length() , line.indexOf("</span>")));
+                            while(line.contains("</span>")){
+                                if(line.indexOf("<span class=\"provider org\">") < line.indexOf("</span>")){
+                                    news.setFrom(line.substring(line.indexOf("<span class=\"provider org\">") + "<span class=\"provider org\">".length() , line.indexOf("</span>")));
+                                    break;
+                                }else{
+                                    line = line.replaceFirst("</span>", "");
+                                }
+                            }
+
                         }
 
                         if(news.getNews() != null && news.getImg() != null && news.getHeaderFull() != null){
@@ -163,17 +177,17 @@ public class WebripYqlTopNews extends AsyncTask<String, String, String> {
             }else{
                 Looper.prepare();
                 dismissDialog();
-                error();
+                error("Fehler beim Zugriff auf die Webseite!");
             }
 
         } catch (MalformedURLException e) {
             Log.d("WebRipAsyncTask", "MalformedURLException", e);
             dismissDialog();
-            error();
+            error("Fehler in der URL!");
         } catch (IOException e) {
             Log.d("WebRipAsyncTask", "IOException", e);
             dismissDialog();
-            error();
+            error("Fehler beim Lesen der Webseite!");
         }
         return null;
     }
@@ -187,7 +201,11 @@ public class WebripYqlTopNews extends AsyncTask<String, String, String> {
         dismissDialog();
         news.setTime(info.getTimeAndSite());
 
-        showDetailNewsView();
+        if(response != HttpURLConnection.HTTP_OK){
+            error("Nachricht existiert nicht mehr!");
+        }else{
+            showDetailNewsView();
+        }
     }
 
     private void showDetailNewsView(){
@@ -200,8 +218,8 @@ public class WebripYqlTopNews extends AsyncTask<String, String, String> {
         act.startActivity(intent);
     }
 
-    private void error(){
-        String error = act.getResources().getString(R.string.errorMsg);
+    private void error(String message){
+        String error = message;
         MyErrorToast.doToast(act, error, Toast.LENGTH_SHORT);
     }
 

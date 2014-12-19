@@ -72,8 +72,11 @@ public class WebripYqlDetailNews extends AsyncTask<String, String, String>{
         while(ripped.contains("<span>")){
             info = new WebripStockNewsInfo();
 
-            int idxTimeFirst = ripped.indexOf("<span>");
-            int idxTimeLast = ripped.indexOf("</span>");
+            int idxTimeFirst = ripped.indexOf("<h3>");
+            int idxTimeLast = ripped.indexOf("</h3>");
+
+            int idxTimeFirstDay = ripped.indexOf("<span>");
+            int idxTimeLastDay = ripped.indexOf("</span>");
 
             int idxHtmlFirst = ripped.indexOf("<a href=\"");
             int idxHtmlLast = ripped.indexOf(".html\">");
@@ -81,15 +84,15 @@ public class WebripYqlDetailNews extends AsyncTask<String, String, String>{
             int idxNewsFirst = ripped.indexOf(".html\">");
             int idxNewsLast = ripped.indexOf("</a>");
 
-            info.setTimeAndSite(ripped.substring(idxTimeFirst + "<span>".length(), idxTimeLast));
+            info.setTimeAndSite(ripped.substring(idxTimeFirst + "<h3>".length() + "<span>".length() , idxTimeLast - "</span>".length()));
             Log.v("Webrip", "Got this String with Data: " + info.getTimeAndSite());
             info.setHtmlLink(ripped.substring(idxHtmlFirst + "<a href=\"".length(), idxHtmlLast + ".html\">".length()-2));
             Log.v("Webrip", "Got this String with Data: " + info.getHtmlLink());
             info.setNews(ripped.substring(idxNewsFirst + ".html\">".length(), idxNewsLast));
             Log.v("Webrip", "Got this String with Data: " + info.getNews());
 
-            ripped = ripped.replaceFirst("<span>", "");
-            ripped = ripped.replaceFirst("</span>", "");
+            ripped = ripped.replaceFirst("<h3>", "");
+            ripped = ripped.replaceFirst("</h3>", "");
             ripped = ripped.replaceFirst("<a href=\"", "");
             ripped = ripped.replaceFirst(".html\">", "");
             ripped = ripped.replaceFirst("</a>", "");

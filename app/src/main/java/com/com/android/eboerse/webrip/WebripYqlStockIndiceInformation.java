@@ -21,6 +21,7 @@ import com.com.android.eboerse.search.YqlStockInformation;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -142,10 +143,12 @@ public class WebripYqlStockIndiceInformation extends AsyncTask<String, String, S
 
 		} catch (MalformedURLException e) {
 			Log.d("WebRipAsyncTask", "MalformedURLException", e);
+            Looper.prepare();
 			dismissDialog();
 			error();
 		} catch (IOException e) {
 			Log.d("WebRipAsyncTask", "IOException", e);
+            Looper.prepare();
 			dismissDialog();
 			error();
 		}finally{

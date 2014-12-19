@@ -28,6 +28,7 @@ import org.xml.sax.SAXException;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -222,19 +223,39 @@ public class YqlStockInformation extends AsyncTask<String, String, String>{
 		} catch (MalformedURLException e) {
 			Log.d(TAG, "MalformedURLException", e);
 			dismissDialog();
-			error();
+            act.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    error();
+                }
+            });
 		} catch (IOException e) {
 			Log.d(TAG, "IOException", e);
 			dismissDialog();
-			error();
+            act.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    error();
+                }
+            });
 		} catch (ParserConfigurationException e) {
 			Log.d(TAG, "Parser Configuration Exception", e);
 			dismissDialog();
-			error();
+            act.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    error();
+                }
+            });
 		} catch (SAXException e) {
 			Log.d(TAG, "SAX Exception", e);
 			dismissDialog();
-			error();
+            act.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    error();
+                }
+            });
 		}
 		finally {
 		}
@@ -431,7 +452,8 @@ public class YqlStockInformation extends AsyncTask<String, String, String>{
 	}
 
 	private void error(){
-		String error = act.getResources().getString(R.string.errorMsg);
+
+        String error = act.getResources().getString(R.string.errorMsg);
 		MyErrorToast.doToast(act, error, Toast.LENGTH_SHORT);		
 	}
 

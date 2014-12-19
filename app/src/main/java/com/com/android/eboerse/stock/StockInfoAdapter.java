@@ -23,6 +23,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -208,8 +209,16 @@ public class StockInfoAdapter extends ArrayAdapter<ArrayAdapterable> implements 
                     WebripStockNewsInfo stock = (WebripStockNewsInfo) items.get(pos);
 
                     if (stock != null) {
-                        stockInfoHolder.name.setText(utf8Shit(stock.getTimeAndSite()));
-                        stockInfoHolder.name.setTypeface(null, Typeface.BOLD);
+                        String timeOld = new String();
+                        if(timeOld.equals(stock.getTimeAndSite())){
+                            LinearLayout parentLayout = (LinearLayout)stockInfoHolder.name.getParent();
+                            parentLayout.removeView(stockInfoHolder.name);
+                        }else{
+                            stockInfoHolder.name.setText(utf8Shit(stock.getTimeAndSite()));
+                            stockInfoHolder.name.setTypeface(null, Typeface.BOLD);
+                            stockInfoHolder.name.setTextSize(12);
+                        }
+
                         if(stock.getNews() == null){
                             stockInfoHolder.infos.setText("N/A");
                         }else{
@@ -218,6 +227,8 @@ public class StockInfoAdapter extends ArrayAdapter<ArrayAdapterable> implements 
 
                         stockInfoHolder.infos.setTextSize(10);
                         stockInfoHolder.infos.setTypeface(null, Typeface.ITALIC);
+
+                        timeOld = stock.getTimeAndSite();
                     }
                 }
             }
