@@ -167,12 +167,12 @@ public class WebripYqlStockIndiceInformation extends AsyncTask<String, String, S
 		YqlStockInformation stocks;
 
 		if(yqlQuery != null){
-			if(tab.equals(TabDetailListener.TAB_ZUSAM)){
+			if(tab.equals(act.getResources().getString(R.string.detail_zusam_tab))){
 				stocks = new YqlStockInformation(act, view, tab);
 				if(ConnectionDetector.isConnectingToInternet(act)){
 					stocks.execute(yqlQuery);
 				}
-			}else if(tab.equals(TabDetailListener.TAB_TOP_FLOP)){
+			}else if(tab.equals(act.getResources().getString(R.string.detail_topflop_tab))){
 				stocks = new YqlStockInformation(act, viewTop, viewBot, tab);
 				if(ConnectionDetector.isConnectingToInternet(act)){
 					stocks.execute(yqlQuery);

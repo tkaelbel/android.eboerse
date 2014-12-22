@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ListView;
@@ -31,6 +32,18 @@ public class JsonUtils extends AsyncTask<String, String, String>{
 	private ListView list;
 	private Activity act;
 	private ArrayList<Result> resultLis = new ArrayList<Result>();
+    private ProgressDialog pdia;
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        if(act != null){
+            pdia = new ProgressDialog(act);
+            pdia.setMessage("Loading...");
+            pdia.setCancelable(false);
+            pdia.show();
+        }
+    }
 
 	public JsonUtils(Activity act, ListView list) {
 		this.list = list;
@@ -120,6 +133,8 @@ public class JsonUtils extends AsyncTask<String, String, String>{
 	protected void onPostExecute(String results) {
 		super.onPostExecute(results);
 
+        dismissDialog();
+
 		String sr = results.replace("YAHOO.Finance.SymbolSuggest.ssCallback", "");
 		String ss = sr.replace("(", "");
 		String srs = ss.replace(")", "");
@@ -140,5 +155,12 @@ public class JsonUtils extends AsyncTask<String, String, String>{
 		String error = act.getResources().getString(R.string.errorMsg);
 		MyErrorToast.doToast(act, error, Toast.LENGTH_SHORT);		
 	}
+
+    private void dismissDialog(){
+        if(act != null){
+            pdia.dismiss();
+        }
+    }
+
 
 }

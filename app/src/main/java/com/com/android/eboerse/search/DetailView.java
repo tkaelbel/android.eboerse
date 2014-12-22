@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.com.android.eboerse.detail.tabs.TabDetailExtendedInformation;
 import com.com.android.eboerse.detail.tabs.TabDetailNews;
 import com.com.android.eboerse.main.ConnectionDetector;
 import com.com.android.eboerse.R;
@@ -65,6 +66,7 @@ public class DetailView extends Activity{
 	private Tab tabTopFlop;
 	private Tab tabZusam;
     private Tab tabNews;
+    private Tab tabExtendedInfos;
 
 	private SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
 	private DatabaseHandler db;
@@ -250,6 +252,14 @@ public class DetailView extends Activity{
             TabDetailListener<?> tl1 = new TabDetailListener<TabDetailNews>(this, label1, TabDetailNews.class, symbol);
             tabNews.setTabListener(tl1);
             bar.addTab(tabNews);
+
+            label1 = getResources().getString(R.string.detail_extended_infos);
+            tabExtendedInfos = bar.newTab();
+            tabExtendedInfos.setText(label1);
+
+            TabDetailListener<?> tl2 = new TabDetailListener<TabDetailExtendedInformation>(this, label1, TabDetailExtendedInformation.class, symbol);
+            tabExtendedInfos.setTabListener(tl2);
+            bar.addTab(tabExtendedInfos);
         }
 
 	}

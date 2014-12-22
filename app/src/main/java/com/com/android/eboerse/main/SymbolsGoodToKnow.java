@@ -22,6 +22,9 @@ public class SymbolsGoodToKnow {
 	public static final String YAHOO_URL_AKT_NEWS = "https://de.finance.yahoo.com/nachrichten/thema-top-nachrichten/";
     public static final String YAHOO_URL_NEWS_DETAIL = "https://de.finance.yahoo.com/";
 
+    public static final String YAHOO_URL_BRANCHE = "https://de.finance.yahoo.com/q/in?s=";
+    public static final String YAHOO_URL_BESTANDTEIL = "https://de.finance.yahoo.com/q/ct?s=";
+
 	public static final String UTF_8_AE = "u00c4";
 	public static final String UTF_8_OE = "u00d6";
 	public static final String UTF_8_ae = "u00e4";

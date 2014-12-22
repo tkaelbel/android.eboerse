@@ -7,8 +7,10 @@ import com.com.android.eboerse.main.SymbolsGoodToKnow;
 import com.com.android.eboerse.search.DetailView;
 import com.com.android.eboerse.search.YqlStockInformation;
 import com.com.android.eboerse.webrip.WebripYqlDetailNews;
+import com.com.android.eboerse.webrip.WebripYqlExtendedInfos;
 import com.com.android.eboerse.webrip.WebripYqlStockIndiceInformation;
 import com.com.android.eboerse.webrip.WebripYqlStockTopNews;
+import com.com.android.eboerse.webrip.webrip.model.WebripExtendedInfos;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -26,15 +28,12 @@ import android.widget.TextView;
  */
 public class TabDetailListener <T extends Fragment> implements ActionBar.TabListener{
 
-	public static final String TAB_PROFIL = "Profil";
-	public static final String TAB_TOP_FLOP = "Top/Flop";
-	public static final String TAB_ZUSAM = "Grundgerüst";
-
 	private DetailView act;
 	private String tag;
 //	private Class<T> mclass;
 	private String symbol;
 
+    //Profil views
 	private TextView symbolNameAndName;
 	private TextView pointsAndDate;
 	private TextView pointsAndPercent;
@@ -47,6 +46,10 @@ public class TabDetailListener <T extends Fragment> implements ActionBar.TabList
 
 	private TextView top;
 	private TextView flop;
+
+    //Extended Infos Views
+    private TextView branche;
+    private TextView industrie;
 
 	public TabDetailListener(DetailView act, String tabName, Class<T> clz, String symbol) {
 		this.act = act;
@@ -71,6 +74,7 @@ public class TabDetailListener <T extends Fragment> implements ActionBar.TabList
 		WebripYqlStockIndiceInformation rip;
         WebripYqlStockTopNews ripNews;
         WebripYqlDetailNews detailNews;
+        WebripYqlExtendedInfos webripYqlExtendedInfos;
 
 		//		Detail View ansicht - Profil
 		if(tag.equals(act.getResources().getString(R.string.detail_profil_tab))){
@@ -146,6 +150,18 @@ public class TabDetailListener <T extends Fragment> implements ActionBar.TabList
                 detailNews.execute(SymbolsGoodToKnow.YAHOO_URL_NEWS + symbol);
             }
 
+        }
+
+        if(tag.equals(act.getResources().getString(R.string.detail_extended_infos))){
+            act.setContentView(R.layout.extended_infos_layout);
+            branche = (TextView) act.findViewById(R.id.textBranche);
+            industrie = (TextView) act.findViewById(R.id.textIndustrie);
+
+            webripYqlExtendedInfos = new WebripYqlExtendedInfos(act, branche, industrie);
+
+            if(ConnectionDetector.isConnectingToInternet(act)){
+                webripYqlExtendedInfos.execute(SymbolsGoodToKnow.YAHOO_URL_BRANCHE + symbol, SymbolsGoodToKnow.YAHOO_URL_BESTANDTEIL +symbol);
+            }
         }
 	}
 

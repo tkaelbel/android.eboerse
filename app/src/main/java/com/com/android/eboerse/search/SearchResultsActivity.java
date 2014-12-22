@@ -44,7 +44,7 @@ public class SearchResultsActivity extends Activity{
 	private void handleIntent(Intent intent) {
 		if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
 			String query = intent.getStringExtra(SearchManager.QUERY);
-
+            getActionBar().setTitle("Suchergebnisse von: " + query);
 			if(query.contains(" ")){
 				String[] newQueryArr = query.split(" ");
 				String newQuery = newQueryArr[0];
@@ -104,6 +104,7 @@ public class SearchResultsActivity extends Activity{
 
 		// Enabling Back navigation on Action Bar icon
 		actionBar.setDisplayHomeAsUpEnabled(true);
+
 
 		handleIntent(getIntent());
 	}

@@ -40,6 +40,7 @@
 	<string name="errorMsg">Fehler beim Zugriff auf Daten von YQL</string>
 	<string name="errorMsgNoInet">Keine Internet-Verbindung vorhanden</string>
 	<string name="news_tab">Nachrichten</string>
+    <string name="detail_extended_infos">Informationen</string>
 
 	
     <string-array name="drawer_list_items">

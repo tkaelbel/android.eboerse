@@ -144,7 +144,7 @@ public class MainActivity extends Activity{
 
 		switch(item.getItemId()) {
 		case R.id.options_menu_main_search:
-			showResult();
+			//showResult();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
