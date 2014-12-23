@@ -2,9 +2,17 @@ package com.com.android.eboerse.webrip;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.GridLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.Space;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +22,7 @@ import com.com.android.eboerse.main.MyErrorToast;
 import com.com.android.eboerse.search.DetailView;
 import com.com.android.eboerse.stock.ArrayAdapterable;
 import com.com.android.eboerse.stock.StockInfoAdapter;
+import com.com.android.eboerse.webrip.adapter.ExtendedInfosAdapter;
 import com.com.android.eboerse.webrip.webrip.model.WebripExtendedInfos;
 import com.com.android.eboerse.webrip.webrip.model.WebripStockComponentOf;
 import com.com.android.eboerse.webrip.webrip.model.WebripStockNewsInfo;
@@ -41,13 +50,15 @@ public class WebripYqlExtendedInfos extends AsyncTask<String, String, String>{
     private Activity act = null;
     private TextView brancheValue = null;
     private TextView industrieValue = null;
+    private ListView extendedInfos = null;
     private WebripExtendedInfos infos = new WebripExtendedInfos();
     private ArrayList<WebripStockComponentOf> componentOfs = new ArrayList<WebripStockComponentOf>();
 
-    public WebripYqlExtendedInfos(Activity act, TextView brancheValue, TextView industrieValue){
+    public WebripYqlExtendedInfos(Activity act, TextView brancheValue, TextView industrieValue, ListView extendedInfos){
         this.act = act;
         this.brancheValue = brancheValue;
         this.industrieValue = industrieValue;
+        this.extendedInfos = extendedInfos;
     }
 
     @Override
@@ -224,11 +235,16 @@ public class WebripYqlExtendedInfos extends AsyncTask<String, String, String>{
 
         brancheValue.setTextSize(12);
         industrieValue.setTextSize(12);
-        brancheValue.setText(infos.getBranche());
-        industrieValue.setText(infos.getIndustrie());
+        brancheValue.setText(StockInfoAdapter.utf8Shit(infos.getBranche()));
+        industrieValue.setText(StockInfoAdapter.utf8Shit(infos.getIndustrie()));
 
+        ExtendedInfosAdapter adapter3 = (ExtendedInfosAdapter) extendedInfos.getAdapter();
+        if(adapter3 != null)
+            adapter3.clear();
 
+        ExtendedInfosAdapter adapter = new ExtendedInfosAdapter(act, android.R.layout.simple_list_item_1, infos.getComponentOf(), act, extendedInfos);
 
+        extendedInfos.setAdapter(adapter);
     }
 
     private void error(){

@@ -37,6 +37,8 @@ import com.com.android.eboerse.search.DetailView;
 import com.com.android.eboerse.webrip.WebripYqlTopNews;
 import com.com.android.eboerse.webrip.webrip.model.WebripStockNewsInfo;
 
+import org.w3c.dom.Text;
+
 
 public class StockInfoAdapter extends ArrayAdapter<ArrayAdapterable> implements OnItemClickListener{
     private ArrayList<ArrayAdapterable> items;
@@ -212,32 +214,31 @@ public class StockInfoAdapter extends ArrayAdapter<ArrayAdapterable> implements 
                     if (stock != null) {
 
                         if (stock.getNews() != null) {
+                            LinearLayout parentLayout = (LinearLayout) stockInfoHolder.name.getParent();
                             if (stock.getTimeAndSite() == null) {
-                                LinearLayout parentLayout = (LinearLayout) stockInfoHolder.name.getParent();
-                                if(parentLayout != null){
-                                    parentLayout.removeView(stockInfoHolder.name);
-                                    TextView view = (TextView) parentLayout.getChildAt(0);
-                                    parentLayout.removeView(view);
-                                    parentLayout.addView(view, 0);
-                                    stockInfoHolder.infos = view;
+                                if (stock.getNews() == null) {
+                                    stockInfoHolder.name.setText("N/A");
+                                } else {
+                                    stockInfoHolder.name.setText(stock.getNews());
                                 }
+                                stockInfoHolder.name.setTypeface(null, Typeface.ITALIC);
+                                stockInfoHolder.name.setTextSize(10);
+                                parentLayout.removeView(stockInfoHolder.infos);
                             } else {
-                                if (stock.getTimeAndSite() != null)
-                                    stockInfoHolder.name.setText(utf8Shit(stock.getTimeAndSite()));
+                                if(parentLayout.getChildCount() < 2)
+                                    parentLayout.addView(stockInfoHolder.infos, 1);
+                                stockInfoHolder.name.setText(utf8Shit(stock.getTimeAndSite()));
                                 stockInfoHolder.name.setTypeface(null, Typeface.BOLD);
                                 stockInfoHolder.name.setTextSize(12);
+                                if (stock.getNews() == null) {
+                                    stockInfoHolder.infos.setText("N/A");
+                                } else {
+                                    stockInfoHolder.infos.setText(stock.getNews());
+                                }
                             }
-
-                            if (stock.getNews() == null) {
-                                stockInfoHolder.infos.setText("N/A");
-                            } else {
-                                stockInfoHolder.infos.setText(stock.getNews());
-                            }
-
+                            stockInfoHolder.infos.setVisibility(View.VISIBLE);
                             stockInfoHolder.infos.setTextSize(10);
                             stockInfoHolder.infos.setTypeface(null, Typeface.ITALIC);
-
-                            timeOld = stock.getTimeAndSite();
                         }
                     }
                 }
@@ -370,7 +371,7 @@ public class StockInfoAdapter extends ArrayAdapter<ArrayAdapterable> implements 
         alarmDialog.show();
     }
 
-    private String utf8Shit(String stringToCheck){
+    public static String utf8Shit(String stringToCheck){
 
         if(stringToCheck != null) {
             if (stringToCheck.contains(SymbolsGoodToKnow.UTF_8_ae)) {
@@ -399,6 +400,9 @@ public class StockInfoAdapter extends ArrayAdapter<ArrayAdapterable> implements 
             }
             if (stringToCheck.contains(SymbolsGoodToKnow.UTF_8_LP)) {
                 stringToCheck = stringToCheck.replace(SymbolsGoodToKnow.UTF_8_LP, "»");
+            }
+            if(stringToCheck.contains(SymbolsGoodToKnow.AND)){
+                stringToCheck = stringToCheck.replace(SymbolsGoodToKnow.AND, "&");
             }
 
             if(stringToCheck.contains("\\")){

@@ -34,6 +34,7 @@ public class SymbolsGoodToKnow {
 	public static final String UTF_8_UE = "u00dc";
     public static final String UTF_8_LP = "u00ab";
     public static final String UTF_8_RP = "u00bb";
+    public static final String AND      = "&amp;";
 
     public static final String HTML_AN = "&quot;";
 

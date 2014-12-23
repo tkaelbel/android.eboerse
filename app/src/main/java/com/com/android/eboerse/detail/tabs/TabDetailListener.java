@@ -50,6 +50,7 @@ public class TabDetailListener <T extends Fragment> implements ActionBar.TabList
     //Extended Infos Views
     private TextView branche;
     private TextView industrie;
+    private ListView extendedInfos;
 
 	public TabDetailListener(DetailView act, String tabName, Class<T> clz, String symbol) {
 		this.act = act;
@@ -156,8 +157,9 @@ public class TabDetailListener <T extends Fragment> implements ActionBar.TabList
             act.setContentView(R.layout.extended_infos_layout);
             branche = (TextView) act.findViewById(R.id.textBranche);
             industrie = (TextView) act.findViewById(R.id.textIndustrie);
+            extendedInfos = (ListView) act.findViewById(R.id.listViewExtendedInfos);
 
-            webripYqlExtendedInfos = new WebripYqlExtendedInfos(act, branche, industrie);
+            webripYqlExtendedInfos = new WebripYqlExtendedInfos(act, branche, industrie, extendedInfos);
 
             if(ConnectionDetector.isConnectingToInternet(act)){
                 webripYqlExtendedInfos.execute(SymbolsGoodToKnow.YAHOO_URL_BRANCHE + symbol, SymbolsGoodToKnow.YAHOO_URL_BESTANDTEIL +symbol);
