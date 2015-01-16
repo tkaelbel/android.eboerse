@@ -47,14 +47,14 @@ public class SymbolsGoodToKnow {
 	
 	public static final String GOLD = "GCG15.CMX";
 	public static final String OEL = "BZJ14.NYM";
-	public static final String SILBER = "SIH14.CMX";
-	public static final String KUPFER = "HGZ13.CMX";
-	public static final String PALLADIUM = "PAZ13.NYM";
-	public static final String PLATINUM = "PLF14.NYM";
-	public static final String CRUDE_OEL = "CLF14.NYM";
-	public static final String HEIZ_OEL = "HOZ13.NYM";
-	public static final String GAS = "NGZ13.NYM";
-	public static final String GASOLINE = "RBZ13.NYM";
+	public static final String SILBER = "SIH15.CMX";
+	public static final String KUPFER = "HGZ15.CMX";
+	public static final String PALLADIUM = "PAZ15.NYM";
+	public static final String PLATINUM = "PLF15.NYM";
+	public static final String CRUDE_OEL = "CLF15.NYM";
+	public static final String HEIZ_OEL = "HOZ15.NYM";
+	public static final String GAS = "NGZ15.NYM";
+	public static final String GASOLINE = "RBZ15.NYM";
 	
 	public static final String EUR_USD = "EURUSD=X";
 	public static final String GBP_USD = "GBPUSD=X";
