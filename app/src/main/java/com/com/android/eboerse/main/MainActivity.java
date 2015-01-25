@@ -89,7 +89,7 @@ public class MainActivity extends Activity{
 		Log.v("EboerseAlarmService", "Service wird gestartet");
 		Intent intent = new Intent(this, EboerseAlarmService.class);
 		PendingIntent pendingIntent = PendingIntent.getService(this, 0, intent, 0);
-		long interval = DateUtils.MINUTE_IN_MILLIS * 15;
+		long interval = DateUtils.MINUTE_IN_MILLIS * 5;
 		long firstStart = System.currentTimeMillis() + interval;
 
 

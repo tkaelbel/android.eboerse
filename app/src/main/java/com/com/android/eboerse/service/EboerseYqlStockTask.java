@@ -49,6 +49,7 @@ public class EboerseYqlStockTask extends AsyncTask<String, String, String>{
 	static final String KEY_DAYS_RANGE = "DaysRange";
 	static final String KEY_STOCK_EXC = "StockExchange";
 	static final String KEY_SYMBOL = "Symbol";
+    static final String KEY_CURRENCY = "Currency";
 
 	// XML Data to Retrieve
 	String name = "";
@@ -172,6 +173,7 @@ public class EboerseYqlStockTask extends AsyncTask<String, String, String>{
 		String stockDaysRange = getTextValue(entry, KEY_DAYS_RANGE);
 		String stockExchange = getTextValue(entry, KEY_STOCK_EXC);
 		String symbol = getTextValue(entry, KEY_SYMBOL);
+        String currency = getTextValue(entry, KEY_CURRENCY);
 
 
 		Calendar cal = Calendar.getInstance();
@@ -181,7 +183,7 @@ public class EboerseYqlStockTask extends AsyncTask<String, String, String>{
 
 		StockInfo theStock = new StockInfo(stockDaysLow, stockDaysHigh, stockYearLow,
 				stockYearHigh, stockName, stocklastTradePriceOnlyTextView,
-				stockChange, stockDaysRange, dateTime, stockExchange, symbol);
+				stockChange, stockDaysRange, dateTime, stockExchange, symbol, currency);
 
 		stock.add(theStock);
 

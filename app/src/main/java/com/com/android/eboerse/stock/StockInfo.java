@@ -19,6 +19,7 @@ public class StockInfo implements ArrayAdapterable{
 	private String dateTime = "";
 	private String stockExchange = "";
 	private String symbol = "";
+    private String currency = "";
 
 	public String getDaysLow() { return daysLow; }
 	public String getDaysHigh() { return daysHigh; }
@@ -33,9 +34,11 @@ public class StockInfo implements ArrayAdapterable{
 	public String getStockExchange() {return stockExchange;}
 	public String getSymbol() {return symbol;}
 
-	public StockInfo(String daysLow, String daysHigh, String yearLow,
+    public String getCurrency() {return currency;}
+
+    public StockInfo(String daysLow, String daysHigh, String yearLow,
 			String yearHigh, String name, String lastTradePriceOnly,
-			String change, String daysRange, String date, String stockExchange, String symbol) {
+			String change, String daysRange, String date, String stockExchange, String symbol, String currency) {
 		this.daysLow = daysLow;
 		this.daysHigh = daysHigh;
 		this.yearLow = yearLow;
@@ -47,10 +50,16 @@ public class StockInfo implements ArrayAdapterable{
 		this.dateTime = date;
 		this.stockExchange = stockExchange;
 		this.symbol = symbol;
+        this.currency = currency;
+
 	}
 
 	public String getInfos(){
-		return dateTime + "      " + lastTradePriceOnly;
+		if(currency != null){
+           return dateTime + "      " + lastTradePriceOnly + "  "+ currency;
+        }else{
+            return dateTime + "      " + lastTradePriceOnly;
+        }
 	}
 
 }

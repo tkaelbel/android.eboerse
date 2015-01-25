@@ -12,7 +12,7 @@ public class SymbolsGoodToKnow {
 	public static final String YAHOO_HISTORICAL_THIRD_URL = "%22%20and%20endDate%20%3D%20%22";
 	public static final String YAHOO_HISTORICAL_FOURTH_URL = "%22&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
 	
-	public static final String YAHOO_URL_FIRST = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quote%20where%20symbol%20in%20(%22";
+	public static final String YAHOO_URL_FIRST = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22";
 	public static final String YAHOO_URL_SECOND = "%22)&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
 	
 	public static final String YAHOO_URL_IDX_FIRST = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20csv%20where%20url%3D'http%3A%2F%2Fdownload.finance.yahoo.com%2Fd%2Fquotes.csv%3Fs%3D%2540%255E";

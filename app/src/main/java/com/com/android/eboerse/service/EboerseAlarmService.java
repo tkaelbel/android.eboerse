@@ -35,7 +35,7 @@ public class EboerseAlarmService extends Service{
 
 	private int count = 0;
 
-	private static final String OVER = "ist \\u00fcber";
+	private static final String OVER = "ist über";
 	private static final String KURS = "Kurs";
 	private static final String UNDER = "ist unter";
 
@@ -150,7 +150,7 @@ public class EboerseAlarmService extends Service{
 
 	private void setupNotification(String msg){
 		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
-		.setSmallIcon(R.drawable.ic_launcher).setContentTitle("eB\\u00f6rse").setContentText(msg).setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 });
+		.setSmallIcon(R.drawable.ic_launcher).setContentTitle("eBörse").setContentText(msg).setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 });
 
 		TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
 		stackBuilder.addParentStack(MainActivity.class);

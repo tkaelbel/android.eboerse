@@ -169,7 +169,7 @@ public class StockInfoAdapter extends ArrayAdapter<ArrayAdapterable> implements 
                                 stockInfoHolder.name.setText(stock.getName());
                                 Date d = new Date();
                                 String date = format1.format(d);
-                                stockInfoHolder.infos.setText(date + "       " + stock.getChange() + "      " + stock.getLastTradePriceOnly());
+                                stockInfoHolder.infos.setText(date + "       " + stock.getChange() + " " + stock.getCurrency() + "      " + stock.getLastTradePriceOnly()+  " " + stock.getCurrency());
                             }
                         }
                     }

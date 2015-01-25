@@ -57,6 +57,7 @@ public class YqlStockInformation extends AsyncTask<String, String, String>{
 	static final String KEY_DAYS_RANGE = "DaysRange";
 	static final String KEY_STOCK_EXC = "StockExchange";
 	static final String KEY_SYMBOL = "Symbol";
+    static final String KEY_CURRENCY = "Currency";
 
 	// XML Data to Retrieve
 	String name = "";
@@ -275,6 +276,7 @@ public class YqlStockInformation extends AsyncTask<String, String, String>{
 		String stockDaysRange = getTextValue(entry, KEY_DAYS_RANGE);
 		String stockExchange = getTextValue(entry, KEY_STOCK_EXC);
 		String symbol = getTextValue(entry, KEY_SYMBOL);
+        String currency = getTextValue(entry, KEY_CURRENCY);
 
 
 		Calendar cal = Calendar.getInstance();
@@ -284,7 +286,7 @@ public class YqlStockInformation extends AsyncTask<String, String, String>{
 
 		StockInfo theStock = new StockInfo(stockDaysLow, stockDaysHigh, stockYearLow,
 				stockYearHigh, stockName, stocklastTradePriceOnlyTextView,
-				stockChange, stockDaysRange, dateTime, stockExchange, symbol);
+				stockChange, stockDaysRange, dateTime, stockExchange, symbol, currency);
 
 		stock.add(theStock);
 		
@@ -349,11 +351,11 @@ public class YqlStockInformation extends AsyncTask<String, String, String>{
 				stockInfo = (StockInfo) stock.get(0);
                 act.getActionBar().setTitle(stockInfo.getName());
 				symbolNameAndName.setText(stockInfo.getName() + "\r\n" + stockInfo.getSymbol());
-				pointsAndDate.setText(stockInfo.getLastTradePriceOnly() + "\r\n" + stockInfo.getDateTime());
+				pointsAndDate.setText(stockInfo.getLastTradePriceOnly() + " " + stockInfo.getCurrency() + "\r\n" + stockInfo.getDateTime());
 
 				if(stockInfo.getLastTradePriceOnly() != null && stockInfo.getChange() != null) {
 					double perc = (100 / Double.valueOf(stockInfo.getLastTradePriceOnly())) * Double.valueOf(stockInfo.getChange());
-					pointsAndPercent.setText(stockInfo.getChange() + "\r\n" + String.format("%.2f", perc));
+					pointsAndPercent.setText(stockInfo.getChange() + " " + stockInfo.getCurrency() + "\r\n" + String.format("%.2f", perc) + " " + "%");
 				}
 
 				if(stockInfo.getYearHigh() == null){
